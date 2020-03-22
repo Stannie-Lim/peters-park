@@ -7,9 +7,8 @@ import { Link } from 'react-router-dom' // hint, you may want to use this
 
 const CatCard = (props) => {
   return (
-    <div class='cat-card'>
-      YOUR CAT CARD CODE HERE
-
+    <div className='cat-card'>
+      
     </div>
   )
 }

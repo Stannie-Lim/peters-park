@@ -5,17 +5,19 @@ import axios from "axios";
 
 
 // INITIAL STATE
-const initialState = null
+const initialState = {};
 
 // ACTION CREATORS
 export const loadCat = data => ({
   // what kinda stuff goes in here?
+  type: 'LOAD_CAT', cat: data
 })
 
 // THUNK CREATORS
 export const fetchCat = id => async (dispatch) => {
   // YOUR CODE HERE
-
+  const cat = (await axios.get(`/api/cats/${id}/`)).data;
+  dispatch(loadCat(cat));
 }
 
 // REDUCER
@@ -23,8 +25,9 @@ export const fetchCat = id => async (dispatch) => {
 // don't modify what the function takes
 export default function (state = initialState, action) {
   switch (action.type) {
-
-
-    default: return state;
+    case 'LOAD_CAT':
+      state = action.cat;
+      break;
   }
+  return state;
 }
